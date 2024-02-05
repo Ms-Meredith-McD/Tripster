@@ -1,8 +1,8 @@
-const Traveller = require('./model/Traveller')
-const Location = require('./model/Location')
-const Trip = require('./model/Trip')
+const Traveller = require('./Traveller')
+const Location = require('./Location')
+const Trip = require('./Trip')
 
-Traveller.belongstoMany(Location, {
+Traveller.belongsToMany(Location, {
     through: {
         model: Trip,
         unique: false
@@ -10,7 +10,7 @@ Traveller.belongstoMany(Location, {
     as: 'travellers_location'
 });
 
-Location.BelongsToMany(Traveller, {
+Location.belongsToMany(Traveller, {
     through: {
         model: Trip,
         unique: false

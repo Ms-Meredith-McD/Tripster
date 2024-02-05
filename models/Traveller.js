@@ -1,23 +1,24 @@
-const {Model, Datatypes} = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Traveller extends Model {}
 
 Traveller.init(
-    {
-        name: {
-        type: Datatypes.STRING
+  {
+    name: {
+      type: DataTypes.STRING,
     },
     email: {
-        type: Datatypes.STRING
+      type: DataTypes.STRING,
     },
-},
-{
+  },
+  {
     sequelize,
     timestamps: false,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'traveller'
-}
+    modelName: "traveller",
+  }
 );
 
 module.exports = Traveller;

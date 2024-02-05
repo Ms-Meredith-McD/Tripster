@@ -1,20 +1,21 @@
-const {Model, Datatypes} = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Location extends Model {}
 
 Location.init(
-    {
-        location_name: {
-        type: Datatypes.STRING
+  {
+    location_name: {
+      type: DataTypes.STRING,
     },
-},
-{
+  },
+  {
     sequelize,
     timestamps: false,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'location'
-}
+    modelName: "location",
+  }
 );
 
-module.exports = Traveller;
+module.exports = Location;

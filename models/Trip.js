@@ -1,40 +1,46 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Trip extends Model {}
 
 Trip.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     traveller_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'traveller',
-        key: 'id',
-        unique: false
-      }
+        model: "traveller",
+        key: "id",
+        unique: false,
+      },
     },
     location_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'location',
-        key: 'id',
-        unique: false
-      }
+        model: "location",
+        key: "id",
+        unique: false,
+      },
     },
     trip_budget: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      allowNull: false,
     },
     traveller_amount: {
-      type: DataTypes.INTEGER
-    }
+      type: DataTypes.INTEGER,
+    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'trip'
+    modelName: "trip",
   }
 );
 
